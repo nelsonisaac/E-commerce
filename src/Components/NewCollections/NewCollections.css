@@ -73,6 +73,7 @@
     }
     .collection{
         gap: 5px;
+        overflow-y: auto;
     }
 }
 
