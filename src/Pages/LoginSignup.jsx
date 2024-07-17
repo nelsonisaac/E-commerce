@@ -17,7 +17,7 @@ const LoginSignup = () => {
     const login = async () => {
         console.log("inside login function");
         let responseData;
-        await fetch("http://localhost:4000/api/login",{
+        await fetch("https://e-commerce-apis-xggn.onrender.com/api/login",{
             method:'POST',
             headers:{
                 Accept:'application/json',
@@ -35,7 +35,7 @@ const LoginSignup = () => {
     const signup = async () => {
         console.log("inside signup function");
         let responseData;
-        await fetch("http://localhost:4000/api/signup",{
+        await fetch("https://e-commerce-apis-xggn.onrender.com/api/signup",{
             method:'POST',
             headers:{
                 Accept:'application/json',

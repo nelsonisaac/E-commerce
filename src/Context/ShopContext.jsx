@@ -30,7 +30,7 @@ const ShopContextProvider = (props) => {
 
     useEffect(() => {
         if (localStorage.getItem('auth-token')) {
-            fetch('http://localhost:4000/api/getcart', {
+            fetch('https://e-commerce-apis-xggn.onrender.com/api/getcart', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -56,7 +56,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         if (localStorage.getItem('auth-token')) {
-            fetch('http://localhost:4000/api/addtocart',
+            fetch('https://e-commerce-apis-xggn.onrender.com/api/addtocart',
                 {
                     method: 'POST',
                     headers: {
@@ -73,7 +73,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
         if (localStorage.getItem('auth-token')) {
-            fetch('http://localhost:4000/api/removecart', {
+            fetch('https://e-commerce-apis-xggn.onrender.com/api/removecart', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
