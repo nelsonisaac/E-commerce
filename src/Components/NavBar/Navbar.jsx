@@ -10,7 +10,7 @@ import dropdown from "../assets/dropdown.png";
 const Navbar = () => {
     // This state is to set the red bar under the selected list in the nav bar
     const [menu, setMenu] = useState("shop");
-    const {totalCartItemsCount} = useContext(ShopContext);
+    const { totalCartItemsCount } = useContext(ShopContext);
     const menuRef = useRef();
 
     const dropdownToggle = (e) => {
@@ -24,7 +24,7 @@ const Navbar = () => {
                 <img src={shopping_cart} alt="" />
                 <p>SHOPOHOLIC</p>
             </div>
-            <img onClick={dropdownToggle} className="nav-dropdown" src={dropdown} alt=""/>
+            <img onClick={dropdownToggle} className="nav-dropdown" src={dropdown} alt="" />
             <ul ref={menuRef} className="nav-menu">
                 <li onClick={() => { setMenu("shop") }}>
                     <Link to="/" style={{ textDecoration: 'none' }}>Shop</Link>
@@ -35,7 +35,13 @@ const Navbar = () => {
                 <li onClick={() => { setMenu("kids") }}><Link to="/kids" style={{ textDecoration: 'none' }}>Kids</Link> {menu === "kids" ? <hr></hr> : <></>}</li>
             </ul>
             <div className="nav-login-cart">
-                <Link to="/login"><button>Login</button></Link>
+                {localStorage.getItem('auth-token')
+                    ? <button onClick={() => {
+                        localStorage.removeItem('auth-token');
+                        window.location.replace("/login")
+                    }}>Logout</button>
+                    : <Link to="/login"><button>Login</button></Link>
+                }
                 <Link to="/cart"><img src={cart_icon}></img></Link>
                 <div className="nav-cart-count">{totalCartItemsCount()}</div>
             </div>
